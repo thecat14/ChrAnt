@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Incrémenter Montant</title>
+</head>
+<body>
+    <h1>Incrémenter Montant</h1>
+    <input type="number" id="montant" placeholder="Entrez un montant">
+    <button onclick="incrementerMontant()">Incrémenter</button>
+    <p>Valeur actuelle : <span id="valeur"></span></p>
+
+    <script>
+        // Initialiser la valeur à partir du stockage local
+        let valeur = localStorage.getItem('valeur') ? parseInt(localStorage.getItem('valeur')) : 0;
+        document.getElementById('valeur').innerText = valeur;
+
+        function incrementerMontant() {
+            let montant = parseInt(document.getElementById('montant').value);
+            if (!isNaN(montant)) {
+                valeur += montant;
+                localStorage.setItem('valeur', valeur);
+                document.getElementById('valeur').innerText = valeur;
+            }
+        }
+    </script>
+</body>
+</html>
